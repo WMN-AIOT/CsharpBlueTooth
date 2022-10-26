@@ -140,7 +140,7 @@ namespace CsharpTest
         //export error log
         public static void ErrorLogging(Exception ex)
         {
-            string strPath = @"D:\Rekha\Log.txt";
+            string strPath = @"C:\Log.txt";
             if (!File.Exists(strPath))
             {
                 File.Create(strPath).Dispose();
