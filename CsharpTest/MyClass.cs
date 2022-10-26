@@ -9,7 +9,7 @@ using Windows.Devices.Bluetooth.Advertisement;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
 using System.Runtime.InteropServices;
-
+using System.IO;
 
 namespace CsharpTest
 {
@@ -47,13 +47,43 @@ namespace CsharpTest
 
             // Register event handlers before starting the watcher.
             // Added, Updated and Removed are required to get all nearby devices
-            deviceWatcher.Added += DeviceWatcher_Added;
-            deviceWatcher.Updated += DeviceWatcher_Updated;
-            //deviceWatcher.Removed += DeviceWatcher_Removed;
+            try
+            {
+                deviceWatcher.Added += DeviceWatcher_Added;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogging(ex);
+            }
+
+            try
+            {
+                deviceWatcher.Updated += DeviceWatcher_Updated;
+                //deviceWatcher.Removed += DeviceWatcher_Removed;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogging(ex);
+            }
 
             // EnumerationCompleted and Stopped are optional to implement.
-            deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
-            deviceWatcher.Stopped += DeviceWatcher_Stopped;
+            try
+            {
+                deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogging(ex);
+            }
+
+            try
+            {
+                deviceWatcher.Stopped += DeviceWatcher_Stopped;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogging(ex);
+            }
             Thread.Sleep(1000);
 
             //Start the watcher.
@@ -105,6 +135,25 @@ namespace CsharpTest
         private static void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
         {
             myDict.Add(args.Name, Convert.ToInt16(args.Properties[SignalStrengthProperty]));
+        }
+
+        //export error log
+        public static void ErrorLogging(Exception ex)
+        {
+            string strPath = @"D:\Rekha\Log.txt";
+            if (!File.Exists(strPath))
+            {
+                File.Create(strPath).Dispose();
+            }
+            using (StreamWriter sw = File.AppendText(strPath))
+            {
+                sw.WriteLine("=============Error Logging ===========");
+                sw.WriteLine("===========Start============= " + DateTime.Now);
+                sw.WriteLine("Error Message: " + ex.Message);
+                sw.WriteLine("Stack Trace: " + ex.StackTrace);
+                sw.WriteLine("===========End============= " + DateTime.Now);
+
+            }
         }
     }
 }
