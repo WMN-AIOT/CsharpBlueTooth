@@ -36,7 +36,9 @@ namespace CsharpTest
 
         public string Main()
         {
-            flag = 0;
+            try
+            {
+                flag = 0;
             blueToothInfor = "";
             // Query for extra properties you want returned
             string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
@@ -47,43 +49,15 @@ namespace CsharpTest
 
             // Register event handlers before starting the watcher.
             // Added, Updated and Removed are required to get all nearby devices
-            try
-            {
-                deviceWatcher.Added += DeviceWatcher_Added;
-            }
-            catch (Exception ex)
-            {
-                ErrorLogging(ex);
-            }
-
-            try
-            {
-                deviceWatcher.Updated += DeviceWatcher_Updated;
+            
+             deviceWatcher.Added += DeviceWatcher_Added;
+             deviceWatcher.Updated += DeviceWatcher_Updated;
                 //deviceWatcher.Removed += DeviceWatcher_Removed;
-            }
-            catch (Exception ex)
-            {
-                ErrorLogging(ex);
-            }
+           
 
             // EnumerationCompleted and Stopped are optional to implement.
-            try
-            {
-                deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
-            }
-            catch (Exception ex)
-            {
-                ErrorLogging(ex);
-            }
-
-            try
-            {
-                deviceWatcher.Stopped += DeviceWatcher_Stopped;
-            }
-            catch (Exception ex)
-            {
-                ErrorLogging(ex);
-            }
+            deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
+            deviceWatcher.Stopped += DeviceWatcher_Stopped;
             Thread.Sleep(1000);
 
             //Start the watcher.
@@ -95,6 +69,11 @@ namespace CsharpTest
 
             }
             return blueToothInfor;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogging(ex);
+            }
         }
 
         public void DeviceWatcher_Stopped(DeviceWatcher sender, object args)
