@@ -38,7 +38,8 @@ namespace CsharpTest
         {
             try
             {
-                Exception e = new Exception("write error log success!!!!!!!! wow 66666666");
+                // 測試Error log有沒有寫到.txt檔
+                Exception e = new Exception("write error log success!!!!!!!! wow~~ 66666666");
                 ErrorLogging(e);
 
 
@@ -56,8 +57,8 @@ namespace CsharpTest
                 // Added, Updated and Removed are required to get all nearby devices
 
                 deviceWatcher.Added += DeviceWatcher_Added;
-                 deviceWatcher.Updated += DeviceWatcher_Updated;
-                 //deviceWatcher.Removed += DeviceWatcher_Removed;
+                deviceWatcher.Updated += DeviceWatcher_Updated;
+                //deviceWatcher.Removed += DeviceWatcher_Removed;
            
 
                 // EnumerationCompleted and Stopped are optional to implement.
@@ -126,7 +127,7 @@ namespace CsharpTest
         //export error log
         public static void ErrorLogging(Exception ex)
         {
-            string strPath = @"C:\aaa\Log.txt";
+            string strPath = @"C:\aaa\Log.txt";  //忘記相對路徑怎麼寫了，先寫絕對路徑
             if (!File.Exists(strPath))
             {
                 File.Create(strPath).Dispose();
