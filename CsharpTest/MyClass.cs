@@ -39,41 +39,44 @@ namespace CsharpTest
             try
             {
                 flag = 0;
-            blueToothInfor = "";
-            // Query for extra properties you want returned
-            string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
-            var BluetoothDeviceSelector = "System.Devices.DevObjectType:=5 AND System.Devices.Aep.ProtocolId:=\"{E0CBF06C-CD8B-4647-BB8A-263B43F0F974}\"";
-            var additionalProperties = new[] { SignalStrengthProperty };
-            DeviceWatcher deviceWatcher = DeviceInformation.CreateWatcher(BluetoothDeviceSelector, additionalProperties);
+                blueToothInfor = "";
+           
+                // Query for extra properties you want returned
+                string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
+                var BluetoothDeviceSelector = "System.Devices.DevObjectType:=5 AND System.Devices.Aep.ProtocolId:=\"{E0CBF06C-CD8B-4647-BB8A-263B43F0F974}\"";
+                var additionalProperties = new[] { SignalStrengthProperty };
+                DeviceWatcher deviceWatcher = DeviceInformation.CreateWatcher(BluetoothDeviceSelector, additionalProperties);
 
-
-            // Register event handlers before starting the watcher.
-            // Added, Updated and Removed are required to get all nearby devices
             
-             deviceWatcher.Added += DeviceWatcher_Added;
-             deviceWatcher.Updated += DeviceWatcher_Updated;
-                //deviceWatcher.Removed += DeviceWatcher_Removed;
+                // Register event handlers before starting the watcher.
+                // Added, Updated and Removed are required to get all nearby devices
+
+                deviceWatcher.Added += DeviceWatcher_Added;
+                 deviceWatcher.Updated += DeviceWatcher_Updated;
+                 //deviceWatcher.Removed += DeviceWatcher_Removed;
            
 
-            // EnumerationCompleted and Stopped are optional to implement.
-            deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
-            deviceWatcher.Stopped += DeviceWatcher_Stopped;
-            Thread.Sleep(1000);
+                // EnumerationCompleted and Stopped are optional to implement.
+                deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
+                deviceWatcher.Stopped += DeviceWatcher_Stopped;
+                Thread.Sleep(1000);
 
-            //Start the watcher.
-            deviceWatcher.Start();
-            flag = 0;
-            blueToothInfor = "";
-            while (flag == 0)
-            {
+                //Start the watcher.
+                deviceWatcher.Start();
+                flag = 0;
+                blueToothInfor = "";
+                while (flag == 0)
+                {
 
-            }
-            return blueToothInfor;
+                }
             }
             catch (Exception ex)
             {
                 ErrorLogging(ex);
             }
+
+
+            return blueToothInfor;
         }
 
         public void DeviceWatcher_Stopped(DeviceWatcher sender, object args)
