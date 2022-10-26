@@ -16,7 +16,7 @@ namespace CsharpTest
     [ComVisible(true)]
     public interface IMyClass
     {
-        void Main();
+        string Main();
     }
     [ComVisible(true)]
     [ClassInterface(ClassInterfaceType.None)]
@@ -25,16 +25,19 @@ namespace CsharpTest
         private const string SignalStrengthProperty = "System.Devices.Aep.SignalStrength";
         static SortedDictionary<string, int> myDict = new SortedDictionary<string, int>();
         static int flag;
-        static string blueToothInfor = "";
+        static string blueToothInfor;
+        static string blueToothDevice1 = "WPS1111";
+        static string blueToothDevice2 = "WPS2222";
         //public void Main()
         //{
         //    flag = 0;
         //    StartScanning();
         //}
 
-        public void Main()
+        public string Main()
         {
             flag = 0;
+            blueToothInfor = "";
             // Query for extra properties you want returned
             string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
             var BluetoothDeviceSelector = "System.Devices.DevObjectType:=5 AND System.Devices.Aep.ProtocolId:=\"{E0CBF06C-CD8B-4647-BB8A-263B43F0F974}\"";
@@ -51,26 +54,31 @@ namespace CsharpTest
             // EnumerationCompleted and Stopped are optional to implement.
             deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
             deviceWatcher.Stopped += DeviceWatcher_Stopped;
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
+
             //Start the watcher.
             deviceWatcher.Start();
-            while(flag == 0)
+            flag = 0;
+            blueToothInfor = "";
+            while (flag == 0)
             {
 
             }
-            //return blueToothInfor;
+            return blueToothInfor;
         }
 
         public void DeviceWatcher_Stopped(DeviceWatcher sender, object args)
         {
             foreach (var item in myDict)
             {
-                if (item.Key == "WPS1111" || item.Key == "WPS2222")
-                {                  
-                    Console.WriteLine(item.Key + " " + item.Value);
+                if (item.Key == blueToothDevice1 || item.Key == blueToothDevice2)
+                {
+                    //Console.WriteLine(item.Key + " " + item.Value);
+                    blueToothInfor = blueToothInfor + item.Value.ToString() + " ";
                 }
             }
             myDict.Clear();
+            flag = 1;
             sender.Start();
         }
 
@@ -87,9 +95,8 @@ namespace CsharpTest
 
         private static void DeviceWatcher_Updated(DeviceWatcher sender, DeviceInformationUpdate args)
         {
-            if(myDict.ContainsKey("WPS1111") && myDict.ContainsKey("WPS2222"))
+            if (myDict.ContainsKey(blueToothDevice1) && myDict.ContainsKey(blueToothDevice2))
             {
-                flag = 1;
                 sender.Stop();
             }
             //throw new NotImplementedException();
@@ -97,7 +104,7 @@ namespace CsharpTest
 
         private static void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
         {
-            myDict.Add(args.Name, Convert.ToInt16(args.Properties[SignalStrengthProperty]));    
+            myDict.Add(args.Name, Convert.ToInt16(args.Properties[SignalStrengthProperty]));
         }
     }
 }
