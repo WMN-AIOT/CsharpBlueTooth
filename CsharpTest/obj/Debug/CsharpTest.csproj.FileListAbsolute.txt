@@ -23,3 +23,13 @@ C:\Users\hy728\桌面\Project\CsharpBlueTooth\CsharpTest\bin\Debug\CsharpTest.dl
 C:\Users\hy728\桌面\Project\CsharpBlueTooth\CsharpTest\bin\Debug\CsharpTest.pdb
 C:\Users\hy728\桌面\Project\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csproj.CopyComplete
 C:\Users\hy728\桌面\Project\CsharpBlueTooth\CsharpTest\bin\Debug\CsharpTest.tlb
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\bin\Debug\CsharpTest.dll
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\bin\Debug\CsharpTest.pdb
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\bin\Debug\CsharpTest.tlb
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csprojAssemblyReference.cache
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csproj.CoreCompileInputs.cache
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csproj.CopyComplete
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.dll
+C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.pdb

@@ -38,6 +38,10 @@ namespace CsharpTest
         {
             try
             {
+                Exception e = new Exception("write error log success!!!!!!!! wow 66666666");
+                ErrorLogging(e);
+
+
                 flag = 0;
                 blueToothInfor = "";
            
@@ -122,7 +126,7 @@ namespace CsharpTest
         //export error log
         public static void ErrorLogging(Exception ex)
         {
-            string strPath = @"C:\Log.txt";
+            string strPath = @"C:\aaa\Log.txt";
             if (!File.Exists(strPath))
             {
                 File.Create(strPath).Dispose();
