@@ -57,13 +57,13 @@ namespace CsharpTest
                 // Added, Updated and Removed are required to get all nearby devices
                 try
                 {
-                    Exception e = new Exception("go DeviceWatcher_Added");
-                    ErrorLogging(e);
+                    Exception e1 = new Exception("go DeviceWatcher_Added");
+                    ErrorLogging(e1);
 
                     deviceWatcher.Added += DeviceWatcher_Added;
 
-                    Exception e = new Exception("leave DeviceWatcher_Added");
-                    ErrorLogging(e);
+                    Exception e2 = new Exception("leave DeviceWatcher_Added");
+                    ErrorLogging(e2);
                 }
                 catch (Exception ex)
                 {

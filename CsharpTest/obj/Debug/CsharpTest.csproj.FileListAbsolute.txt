@@ -33,4 +33,3 @@ C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csproj.CoreCo
 C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csproj.CopyComplete
 C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.dll
 C:\Projects\GitHub\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.pdb
-C:\Users\hy728\桌面\Project\CsharpBlueTooth\CsharpTest\obj\Debug\CsharpTest.csproj.AssemblyReference.cache
