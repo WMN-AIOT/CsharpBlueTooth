@@ -36,11 +36,11 @@ namespace CsharpTest
 
         public string Main()
         {
-            try
-            {
+            //try
+            //{
                 // 測試Error log有沒有寫到.txt檔
-                Exception e = new Exception("write error log success!!!!!!!! wow~~ 66666666");
-                ErrorLogging(e);
+                //Exception e = new Exception("write error log success!!!!!!!! wow~~ 66666666");
+                //ErrorLogging(e);
 
 
                 flag = 0;
@@ -75,11 +75,11 @@ namespace CsharpTest
                 {
 
                 }
-            }
-            catch (Exception ex)
-            {
-                ErrorLogging(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+                //ErrorLogging(ex);
+            //}
 
 
             return blueToothInfor;
@@ -97,7 +97,7 @@ namespace CsharpTest
             }
             myDict.Clear();
             flag = 1;
-            sender.Start();
+            //sender.Start();
         }
 
         private static void DeviceWatcher_EnumerationCompleted(DeviceWatcher sender, object args)
@@ -123,20 +123,20 @@ namespace CsharpTest
         private static void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
         {
 
-            try
-            {
-                Exception e1 = new Exception("go DeviceWatcher_Added");
-                ErrorLogging(e1);
+            //try
+            //{
+                //Exception e1 = new Exception("go DeviceWatcher_Added");
+                //ErrorLogging(e1);
 
                 myDict.Add(args.Name, Convert.ToInt16(args.Properties[SignalStrengthProperty]));
 
-                Exception e2 = new Exception("leave DeviceWatcher_Added");
-                ErrorLogging(e2);
-            }
-            catch (Exception ex)
-            {
-                ErrorLogging(ex);
-            }
+                //Exception e2 = new Exception("leave DeviceWatcher_Added");
+                //ErrorLogging(e2);
+            //}
+            //catch (Exception ex)
+            //{
+                //ErrorLogging(ex);
+            //}
 
            
         }
