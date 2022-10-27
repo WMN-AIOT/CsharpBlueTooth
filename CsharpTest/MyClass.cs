@@ -55,20 +55,8 @@ namespace CsharpTest
             
                 // Register event handlers before starting the watcher.
                 // Added, Updated and Removed are required to get all nearby devices
-                try
-                {
-                    Exception e1 = new Exception("go DeviceWatcher_Added");
-                    ErrorLogging(e1);
-
-                    deviceWatcher.Added += DeviceWatcher_Added;
-
-                    Exception e2 = new Exception("leave DeviceWatcher_Added");
-                    ErrorLogging(e2);
-                }
-                catch (Exception ex)
-                {
-                    ErrorLogging(ex);
-                }
+                deviceWatcher.Added += DeviceWatcher_Added;
+                
 
                 deviceWatcher.Updated += DeviceWatcher_Updated;
                 //deviceWatcher.Removed += DeviceWatcher_Removed;
@@ -134,7 +122,23 @@ namespace CsharpTest
 
         private static void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
         {
-            myDict.Add(args.Name, Convert.ToInt16(args.Properties[SignalStrengthProperty]));
+
+            try
+            {
+                Exception e1 = new Exception("go DeviceWatcher_Added");
+                ErrorLogging(e1);
+
+                myDict.Add(args.Name, Convert.ToInt16(args.Properties[SignalStrengthProperty]));
+
+                Exception e2 = new Exception("leave DeviceWatcher_Added");
+                ErrorLogging(e2);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogging(ex);
+            }
+
+           
         }
 
         //export error log
