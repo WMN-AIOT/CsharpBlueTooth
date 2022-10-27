@@ -55,8 +55,21 @@ namespace CsharpTest
             
                 // Register event handlers before starting the watcher.
                 // Added, Updated and Removed are required to get all nearby devices
+                try
+                {
+                    Exception e = new Exception("go DeviceWatcher_Added");
+                    ErrorLogging(e);
 
-                deviceWatcher.Added += DeviceWatcher_Added;
+                    deviceWatcher.Added += DeviceWatcher_Added;
+
+                    Exception e = new Exception("leave DeviceWatcher_Added");
+                    ErrorLogging(e);
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogging(ex);
+                }
+
                 deviceWatcher.Updated += DeviceWatcher_Updated;
                 //deviceWatcher.Removed += DeviceWatcher_Removed;
            
